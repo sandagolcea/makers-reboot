@@ -1,0 +1,6 @@
+# File including all gems necessary for program bootup
+source 'https://rubygems.org'
+
+gem 'rspec'
+gem 'capybara'
+gem 'rubocop', require: false
