@@ -1,11 +1,32 @@
 require_relative 'bike'
+STATION_FULL_ERR = 'Station is full'
+STATION_EMPTY_ERR = 'No bikes available'
+DEFAULT_CAPACITY = 20
 
 class DockingStation
-  attr_writer :bike
-  alias_method :dock, :bike=
+  def initialize
+    @bikes = []
+  end
+
+  def dock bike
+    fail STATION_FULL_ERR if full?
+    @bikes << bike
+  end
 
   def release_bike
-    fail 'No bikes available' unless @bike
-    @bike
+    fail STATION_EMPTY_ERR if empty?
+    @bikes.pop
+  end
+
+  private
+
+  attr_reader :bike
+
+  def empty?
+    @bikes.length == 0
+  end
+
+  def full?
+    @bikes.length >= DEFAULT_CAPACITY
   end
 end
