@@ -1,5 +1,5 @@
 require_relative 'bike'
-STATION_FULL_ERR = 'Station is full'
+STATION_FULL_ERR = 'Station full'
 STATION_EMPTY_ERR = 'No bikes available'
 DEFAULT_CAPACITY = 20
 
@@ -23,7 +23,7 @@ class DockingStation
   attr_reader :bike
 
   def empty?
-    @bikes.length == 0
+    @bikes.reject(&:broken?).length == 0
   end
 
   def full?
