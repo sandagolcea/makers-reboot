@@ -22,6 +22,10 @@ class Plane
     land if airport.dock(self)
   end
 
+  def take_off_from(airport)
+    take_off if airport.release(self)
+  end
+
   def flying?
     status == :flying
   end

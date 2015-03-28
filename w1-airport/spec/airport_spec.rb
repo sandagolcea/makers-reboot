@@ -29,4 +29,10 @@ describe Airport do
     airport.dock(plane)
     expect(airport.plane_count).to eq 1
   end
+
+  it 'can release a plane' do
+    airport.dock(plane)
+    airport.release(plane)
+    expect(airport.plane_count).to eq 0
+  end
 end
