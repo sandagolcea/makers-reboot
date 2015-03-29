@@ -2,4 +2,5 @@ Documentation:
   Enabled: false
 Style/MethodDefParentheses:
   Enabled: false
-  
+Style/RescueModifier:
+  Enabled: false
