@@ -21,7 +21,7 @@ describe Airport do
 
   it 'should raise an error if it is full and can\'t dock a plane' do
     MAX_CAPACITY.times { airport.dock(Planes.new) }
-    expect { airport.dock(plane) }.to raise_error 'Airport is full'
+    expect(airport.dock(plane)).to eq false
   end
 
   it 'can\'t dock the same plane twice' do

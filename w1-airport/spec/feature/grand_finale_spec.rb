@@ -10,9 +10,9 @@ feature 'Grand finale' do
     planes = []
     CAPACITY.times { planes << Plane.new }
     # land all planes
-    planes.each { |plane| plane.land_at(airport) rescue retry }
+    planes.each { |plane| plane.land_at(airport) while plane.flying? }
     expect(airport.plane_count).to eq CAPACITY
-    # take off all planes
+    # all planes take off
     planes.each do |plane|
       plane.take_off_from(airport) until plane.flying?
     end

@@ -10,7 +10,7 @@ class Airport
   end
 
   def dock(plane)
-    check_dock_permission
+    return false unless can_dock?
     @planes << plane unless @planes.include?(plane)
   end
 
@@ -28,8 +28,7 @@ class Airport
     plane_count >= capacity
   end
 
-  def check_dock_permission
-    fail 'Airport is full' if full?
-    fail 'Storm coming: flights cancelled' unless good_weather?
+  def can_dock?
+    !full? && good_weather?
   end
 end

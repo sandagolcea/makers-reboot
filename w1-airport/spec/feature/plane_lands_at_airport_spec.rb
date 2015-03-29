@@ -16,7 +16,7 @@ feature 'plane tries to land' do
   scenario 'when the airport is full' do
     allow(airport).to receive(:good_weather?).and_return(true)
     20.times { airport.dock(Plane.new) }
-    expect { airport.dock(plane) }.to raise_error
+    expect(airport.dock(plane)).to eq false
     expect(plane).to be_flying
   end
 end
