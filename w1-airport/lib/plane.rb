@@ -4,18 +4,14 @@ class Plane
     @status = :flying
   end
 
-  def update_status
-    @status = status == :flying ? :landed : :flying
-  end
-
   def land
     fail 'Plane has already landed' unless flying?
-    update_status
+    toggle_status
   end
 
   def take_off
     fail 'Plane is already flying' if flying?
-    update_status
+    toggle_status
   end
 
   def land_at(airport)
@@ -28,5 +24,11 @@ class Plane
 
   def flying?
     status == :flying
+  end
+
+  private
+
+  def toggle_status
+    @status = status == :flying ? :landed : :flying
   end
 end
