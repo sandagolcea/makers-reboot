@@ -20,4 +20,19 @@ describe Ship do
   it 'should have vertical coordinates as requested' do
     expect(vertical_ship.coordinates).to eq [[0, 0], [0, 1]]
   end
+
+  it 'should take a hit' do
+    ship.hit_at?([0, 0])
+    expect(ship.hitlist).to include([0, 0])
+  end
+
+  it 'should not take a hit if you missed it' do
+    expect(ship).not_to be_hit_at([6, 5])
+  end
+
+  it 'should be sunk if all cells hit' do
+    ship.hit_at?([0, 0])
+    ship.hit_at?([1, 0])
+    expect(ship).to be_sunk
+  end
 end

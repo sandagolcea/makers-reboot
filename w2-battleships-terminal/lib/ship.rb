@@ -1,16 +1,16 @@
 class Ship
-  SHIPS = { battleship: 4, destroyer: 2 }
-  attr_reader :size, :start, :coordinates
+  SHIPS = { battleship: 4, cruiser: 3, destroyer: 2, submarine: 1 }
+  attr_reader :size, :start, :coordinates, :hitlist
 
   def initialize(ship_type, start_point, direction)
     @size = SHIPS[ship_type]
     @coordinates = []
-    @status = :floating
+    @hitlist = []
     calculate_coords(start_point, direction)
   end
 
   def sunk?
-    :sunk == @status
+    coordinates.length == hitlist.length ? true : false
   end
 
   def calculate_coords(start, direction)
@@ -19,6 +19,10 @@ class Ship
       @coordinates << [x, y]
       direction == :horizontal ? x = x.next : y = y.next
     end
+  end
+
+  def hit_at?(location)
+    @coordinates.include?(location) ? @hitlist << location : false
   end
 
   private

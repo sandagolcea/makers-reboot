@@ -34,5 +34,18 @@ describe Board do
   end
 
   context 'during game play' do
+    it 'should accept shots' do
+      board.accept_shot_at([0, 0])
+      expect(board.misslist.size).to eq 1
+    end
+    it 'should not accept shots outside the borders' do
+      expect(small_board.accept_shot_at([0, 11])).to eq false
+    end
+    it 'should know if not all ships are sunk' do
+      allow(ship).to receive(:coordinates).and_return([[0, 0], [0, 1]])
+      board.place(ship)
+      allow(ship).to receive(:sunk?).and_return(false)
+      expect(board.all_ships_sunk?).to eq false
+    end
   end
 end

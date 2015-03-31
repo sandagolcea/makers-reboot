@@ -13,4 +13,11 @@ describe Player do
       expect(player.board.ships.size).to eq 1
     end
   end
+
+  context 'at the end of the game' do
+    it 'should know if he/she lost' do
+      player.place(ship)
+      expect(player.lost?).to eq false
+    end
+  end
 end

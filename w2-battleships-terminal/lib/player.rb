@@ -9,4 +9,16 @@ class Player
   def place(ship)
     @board.place(ship)
   end
+
+  def shoot_at(location, board)
+    board.accept_shot_at(location)
+  end
+
+  def lost?
+    board.all_ships_sunk?
+  end
+
+  def ship_nr
+    board.ships.size
+  end
 end
