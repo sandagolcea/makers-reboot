@@ -10,7 +10,7 @@ class Ship
   end
 
   def sunk?
-    coordinates.length == hitlist.length ? true : false
+    coordinates.length == hitlist.length
   end
 
   def calculate_coords(start, direction)

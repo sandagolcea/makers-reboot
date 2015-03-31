@@ -2,5 +2,7 @@ Documentation:
   Enabled: false
 Style/MethodDefParentheses:
   Enabled: false
+SingleLineBlockParams:
+  Enabled: false
 Metrics/LineLength:
   Max: 99
