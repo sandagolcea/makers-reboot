@@ -8,8 +8,4 @@ describe Dish do
   it 'has a price' do
     expect(dish.price).not_to eq nil
   end
-  it 'can be updated' do
-    dish.update('pizza', 21)
-    expect(dish.name).to eq 'pizza'
-  end
 end

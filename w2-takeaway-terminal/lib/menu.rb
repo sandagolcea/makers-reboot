@@ -10,8 +10,4 @@ class Menu
   def search(name)
     @items.any? { |item| item.name == name }
   end
-
-  def remove(name)
-    @items.delete(name)
-  end
 end

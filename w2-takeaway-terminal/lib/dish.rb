@@ -4,9 +4,4 @@ class Dish
     @name = name
     @price = price
   end
-
-  def update(name, price)
-    @name = name
-    @price = price
-  end
 end
