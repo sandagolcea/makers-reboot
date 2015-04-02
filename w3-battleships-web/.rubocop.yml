@@ -1,0 +1,9 @@
+Documentation:
+  Enabled: false
+Style/MethodDefParentheses:
+  Enabled: false
+Metrics/LineLength:
+  Max: 99
+AllCops:
+  Exclude:
+    - 'features/**/*'
