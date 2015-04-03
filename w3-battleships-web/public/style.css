@@ -1,0 +1,29 @@
+body {
+  background-color: #AAFFAA;
+}
+
+table
+{
+  padding: 0px;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  margin: auto;
+}
+
+td
+{
+  height: 36px;
+  width: 36px;
+
+  border: 1px solid #000;
+  padding: 0px;
+
+  empty-cells: show;
+  text-align: center
+}
+
+p {
+  text-align: center
+}

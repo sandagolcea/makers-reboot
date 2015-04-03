@@ -1,1 +1,34 @@
-<h3>Welcome to the game <%= @player1.name %>!</h3>
+<div class='container'>
+<h3>Welcome to the game <%= @game.current_player.name %>!</h3>
+<div class='row'>
+  <div class='col-md-6'>
+  <p>Your board</p>
+    <table>
+    <% 10.times do%>
+      <tr>
+      <% 10.times do%>
+        <td></td>
+      <% end %>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+  <div class='col-md-6'>
+  <form action="">
+    Place ship:
+    <select>
+      <option value="battleship">battleship(4)</option>
+      <option value="cruiser">cruiser(3)</option>
+      <option value="destroyer">destroyer(2)</option>
+      <option value="submarine">submarine(1)</option>
+    </select><br>
+    Coordinates:<input type="text" name="coordinates"><br>
+    Direction: 
+    <select>
+      <option value="horizontal">horizontal</option>
+      <option value="vertical">vertical</option>
+    </select><br>
+    <button type="submit">Place ship</button>
+  </form>
+<br>
+</div>
