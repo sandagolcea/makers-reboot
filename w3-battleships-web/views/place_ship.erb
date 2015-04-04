@@ -1,5 +1,7 @@
 <div class='container'>
-<h3>Welcome to the game <%= @game.current_player.name %>!</h3>
+<% if @game.current_player.name%>
+  <h3>Welcome to the game <%= @game.current_player.name %>!</h3>
+<% end %>
 <div class='row'>
   <div class='col-md-6'>
   <p>Your board</p>
@@ -14,17 +16,17 @@
     </table>
   </div>
   <div class='col-md-6'>
-  <form action="">
+  <form name="ship-form" action="/place_ship"  onsubmit="return validateForm()">
     Place ship:
-    <select>
-      <option value="battleship">battleship(4)</option>
-      <option value="cruiser">cruiser(3)</option>
-      <option value="destroyer">destroyer(2)</option>
-      <option value="submarine">submarine(1)</option>
+    <select name="type">
+      <option value="battleship">battleship</option>
+      <option value="cruiser">cruiser</option>
+      <option value="destroyer">destroyer</option>
+      <option value="submarine">submarine</option>
     </select><br>
     Coordinates:<input type="text" name="coordinates"><br>
     Direction: 
-    <select>
+    <select name="direction">
       <option value="horizontal">horizontal</option>
       <option value="vertical">vertical</option>
     </select><br>
