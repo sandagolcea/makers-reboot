@@ -1,5 +1,5 @@
 body {
-  background-color: #AAFFAA;
+  background-color: #ABCDFF;
 }
 
 table
@@ -22,6 +22,14 @@ td
 
   empty-cells: show;
   text-align: center
+}
+
+td.water {
+  background-color: #FFF;
+}
+
+td.ship {
+  background-color: #AAFFBB;
 }
 
 p {

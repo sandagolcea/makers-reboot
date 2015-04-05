@@ -20,6 +20,11 @@ class BattleShips < Sinatra::Base
   get '/place_ship' do
     @game = session[:game]
     @ship = Ship.new(params[:type].to_sym, params[:coordinates].to_sym, params[:direction].to_sym)
+    @game.current_player.ships.delete(params[:type].to_sym) if @game.current_player.place(@ship)
+    if @game.current_player.ships.size > 0
+      puts 'current_player still has ships to place'
+
+    end
     erb :place_ship
   end
 

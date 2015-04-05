@@ -31,6 +31,12 @@ describe Board do
       board.place(ship)
       expect(board.ships.size).to eq 1
     end
+    it 'should know what class a cell is' do
+      allow(ship).to receive(:coordinates).and_return([[0, 0], [0, 1]])
+      allow(ship).to receive(:sunk?).and_return(false)
+      board.place(ship)
+      expect(board.cell_class([0, 0])).to eq 'ship'
+    end
   end
 
   context 'during game play' do
@@ -46,6 +52,18 @@ describe Board do
       board.place(ship)
       allow(ship).to receive(:sunk?).and_return(false)
       expect(board.all_ships_sunk?).to eq false
+    end
+    it 'should know if a cell is missed' do
+      board.accept_shot_at([0, 0])
+      expect(board.cell_class([0, 0])).to eq 'miss'
+    end
+    it 'should know if a cell is hit' do
+      allow(ship).to receive(:coordinates).and_return([[0, 0], [0, 1]])
+      allow(ship).to receive(:hit_at?).and_return true
+      allow(ship).to receive(:sunk?).and_return(false)
+      board.place(ship)
+      board.accept_shot_at([0, 0])
+      expect(board.cell_class([0, 0])).to eq 'hit'
     end
   end
 end

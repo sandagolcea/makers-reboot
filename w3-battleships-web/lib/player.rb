@@ -1,11 +1,14 @@
 require './lib/board'
+SHIP_LIST = [:battleship, :cruiser, :destroyer, :submarine]
 
 class Player
   attr_reader :name, :board
+  attr_accessor :ships
 
   def initialize(name = 'Player1')
     @name = name
     @board = Board.new(10)
+    @ships = SHIP_LIST
   end
 
   def place(ship)

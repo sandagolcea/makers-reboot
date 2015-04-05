@@ -6,10 +6,10 @@
   <div class='col-md-6'>
   <p>Your board</p>
     <table>
-    <% 10.times do%>
+    <% 10.times do |i| %>
       <tr>
-      <% 10.times do%>
-        <td></td>
+      <% 10.times do |j| %>
+        <td class="<%= @game.current_player.board.cell_class([i,j]) %>"></td>
       <% end %>
       </tr>
     <% end %>
@@ -19,10 +19,9 @@
   <form name="ship-form" action="/place_ship"  onsubmit="return validateForm()">
     Place ship:
     <select name="type">
-      <option value="battleship">battleship</option>
-      <option value="cruiser">cruiser</option>
-      <option value="destroyer">destroyer</option>
-      <option value="submarine">submarine</option>
+      <% @game.current_player.ships.each do |ship| %>
+        <option value="<%=ship%>"><%=ship%></option>
+      <% end %>
     </select><br>
     Coordinates:<input type="text" name="coordinates"><br>
     Direction: 

@@ -23,6 +23,16 @@ class Board
     ships.all?(&:sunk?)
   end
 
+  def cell_class(coord)
+    return 'miss' if misslist.include?(coord)
+    if hitlist.include?(coord)
+      belongs_to_sunken_ship(coord) ? (return 'sunk') : (return 'hit')
+    else
+      return 'ship' if belongs_to_ship(coord)
+    end
+    'water'
+  end
+
   private
 
   def valid?(xy)
@@ -32,5 +42,13 @@ class Board
   def can_place?(coords)
     coords.each { |coord| return false unless valid?(coord) }
     coords.each { |coord| ships.each { |s| return false if s.coordinates.include?(coord) } }
+  end
+
+  def belongs_to_ship(coord)
+    ships.any? { |ship| ship.coordinates.include?(coord) }
+  end
+
+  def belongs_to_sunken_ship(coord)
+    ships.any? { |ship| ship.coordinates.include?(coord) && ship.sunk? }
   end
 end
