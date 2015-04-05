@@ -1,0 +1,32 @@
+<div class='container'>
+<div class='row'>
+  <div class='col-md-6'>
+  <br><p>Your board:</p>
+  <!-- Current_player_board -->
+    <table>
+    <% @matrix.size.times do |i| %>
+      <tr>
+      <% @matrix.size.times do |j| %>
+        <td class='<%= @matrix[i][j] %>'>
+        </td>
+      <% end %>
+      </tr>
+    <% end %>
+    </table>
+  <!-- End current player board -->
+  </div>
+  <div class='col-md-6'>
+    <br><p>Enemy board:</p>
+    <table>
+    <% @enemy_matrix.size.times do |i| %>
+      <tr>
+      <% @enemy_matrix.size.times do |j| %>
+        <td class='<%= @enemy_matrix[i][j] %>'>
+        </td>
+      <% end %>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+</div>
+</div>
