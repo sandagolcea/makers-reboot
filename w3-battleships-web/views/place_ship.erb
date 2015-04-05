@@ -4,16 +4,24 @@
 <% end %>
 <div class='row'>
   <div class='col-md-6'>
+  <!-- Board creation -->
   <p>Your board</p>
+    <% letter = "A" %>
     <table>
+    <tr>
+      <% 11.times { |number| %><td><%= number %></td><% } %>
+    </tr>
     <% 10.times do |i| %>
       <tr>
+      <td><%= letter %></td>
       <% 10.times do |j| %>
         <td class="<%= @game.current_player.board.cell_class([i,j]) %>"></td>
       <% end %>
       </tr>
+      <% letter = letter.next %>
     <% end %>
     </table>
+    <!-- Board end -->
   </div>
   <div class='col-md-6'>
   <form name="ship-form" action="/place_ship"  onsubmit="return validateForm()">

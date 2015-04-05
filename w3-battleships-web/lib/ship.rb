@@ -17,7 +17,7 @@ class Ship
     x, y = translate_x(start), translate_y(start)
     size.times do
       @coordinates << [x, y]
-      direction == :horizontal ? x = x.next : y = y.next
+      direction == :horizontal ? y = y.next : x = x.next
     end
   end
 
