@@ -17,7 +17,7 @@ Scenario: Placing a ship on the board
     When I press "Place ship"
     Then I should see "cruiser"
 
-  Scenario: Player done placing ships
+Scenario: Player done placing ships
     Given I am on the homepage
     And I fill in "player1" with "Sanda"
     And I fill in "player2" with "Jair"

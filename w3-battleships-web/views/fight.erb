@@ -1,5 +1,14 @@
 <div class='container'>
 <div class='row'>
+  <!-- Shoot request for coordinates -->
+  <form action='/player_change'>
+    <br>
+    Coordinates:<input type="text" name="coordinates">
+    <button type="submit">Shoot</button>
+  </form>
+  <!-- End shoot request -->
+</div>
+<div class='row'>
   <div class='col-md-6'>
   <br><p>Your board:</p>
   <!-- Current_player_board -->
@@ -17,6 +26,7 @@
   </div>
   <div class='col-md-6'>
     <br><p>Enemy board:</p>
+    <!-- Enemy_board -->
     <table>
     <% @enemy_matrix.size.times do |i| %>
       <tr>
@@ -27,6 +37,7 @@
       </tr>
     <% end %>
     </table>
+    <!-- End enemy board -->
   </div>
 </div>
 </div>

@@ -39,5 +39,12 @@ class BattleShips < Sinatra::Base
     erb :fight
   end
 
+  get '/player_change' do
+    game = session[:game]
+    redirect '/fight' unless params[:coordinates]
+    game.current_player.shoot_at(params[:coordinates].to_sym)
+    erb :fight
+  end
+
   run! if app_file == $PROGRAM_NAME
 end
